@@ -1,0 +1,23 @@
+name: 'Dokku auto-deploy main branch'
+
+# Github creates a "push" when you EITHER: push to a branch OR merge a PR into it
+# So this action will run on direct pushes to "main" OR a merged PR
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Push to dokku
+        uses: dokku/github-action@v1.4.0
+        with:
+          git_remote_url: 'ssh://root@5.161.57.119:22/test-rails'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
