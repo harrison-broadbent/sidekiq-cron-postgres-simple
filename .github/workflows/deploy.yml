@@ -1,3 +1,4 @@
+---
 name: 'Dokku auto-deploy main branch'
 
 # Github creates a "push" when you EITHER: push to a branch OR merge a PR into it
@@ -19,5 +20,5 @@ jobs:
       - name: Push to dokku
         uses: dokku/github-action@v1.4.0
         with:
-          git_remote_url: 'ssh://root@5.161.57.119:22/test-rails'
+          git_remote_url: 'ssh://dokku@5.161.57.119:test-rails'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
