@@ -1,0 +1,4 @@
+---
+:concurrency: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %> # make sure less than database.yml pool size
+:queues:
+  - default

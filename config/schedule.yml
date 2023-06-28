@@ -1,0 +1,6 @@
+# config/schedule.yml
+
+sidekiq_post_job:
+  cron: "*/1 * * * *"
+  class: "SidekiqPostJob"
+  queue: default
